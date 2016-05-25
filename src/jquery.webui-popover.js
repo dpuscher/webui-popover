@@ -223,7 +223,7 @@
                 }
 
 
-                var e = $.Event('hide.' + pluginType);
+                var e = $.Event('beforehide.' + pluginType);
                 this.$element.trigger(e, [this.$target]);
                 if (this.$target) {
                     this.$target.removeClass('in').addClass(this.getHideAnimation());
@@ -236,7 +236,7 @@
                     backdrop.hide();
                 }
                 this._opened = false;
-                this.$element.trigger('hidden.' + pluginType, [this.$target]);
+                this.$element.trigger('afterhide.' + pluginType, [this.$target]);
 
                 if (this.options.onHide) {
                     this.options.onHide(this.$target);
@@ -317,7 +317,7 @@
                     targetHeight = $target[0].offsetHeight,
                     //placement
                     placement = 'bottom',
-                    e = $.Event('show.' + pluginType);
+                    e = $.Event('beforeshow.' + pluginType);
                 //if (this.hasContent()){
                 this.$element.trigger(e, [$target]);
                 //}
@@ -436,7 +436,7 @@
 
                 }
                 this._poped = true;
-                this.$element.trigger('shown.' + pluginType, [this.$target]);
+                this.$element.trigger('aftershow.' + pluginType, [this.$target]);
             },
 
             isTargetLoaded: function() {
